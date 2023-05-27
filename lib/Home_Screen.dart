@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hive_nosql_local_storage_database/Boxes/boxes.dart';
 import 'package:flutter_hive_nosql_local_storage_database/models/notes_model.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 
 
 
@@ -22,27 +23,39 @@ final descriptionController = TextEditingController();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Hive Database"),
+        title: Text("Notes App"),
       ),
 
 
-      body: Column(
-        children: [
-          FutureBuilder(
-            future: Hive.openBox("Somad") ,
-            builder:(context, snapshot) {
+      body: ValueListenableBuilder<Box<NotesModel>>(
+         valueListenable: Boxes.getData().listenable(),
+         builder:(context, box, _){
+           var data = box.values.toList().cast<NotesModel>();
+          
+           return ListView.builder(
+            reverse: true,
+            shrinkWrap: true,
+            itemCount: box.length,
+            itemBuilder:(context, index) {
+              return Card(
+                child:Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 15,horizontal: 10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                        Text(data[index].title.toString()),
+                        Text(data[index].description.toString())
+                    ],
+                  ),
+                ),
+              );
+              
+           },);
+      },),
 
-            return Column(
-              children: [
 
 
-                
-              ],
-            );
-            
-          },)
-        ],
-      ),
       
       
       floatingActionButton: FloatingActionButton(onPressed: ()async{
@@ -109,6 +122,7 @@ Future<void> _showdMydialog(){
         data.save();
         titleController.clear();
         descriptionController.clear();
+        Navigator.pop(context);
 
          
         }, child:Text("Add"))

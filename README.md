@@ -64,16 +64,15 @@ flutter pub run build_runner build
 
 
 
-<!-- ## Hive Database App Ui Preview
+## Hive Database Notes App Ui Preview
 
 
 <table>
   
   
 <tr>                    
-   <th>Hive Database Data Get view</th>
-   <th>Hive Database Data Update view</th>
-   <th>Hive Database Data delete view</th>
+   <th>Notes App Data Add view</th>
+   <th>Notes App Data Show view</th>
 </tr>  
   
   
@@ -81,21 +80,18 @@ flutter pub run build_runner build
 <tr>
 
 <td>
-  <img src="https://github.com/mdsomad/Flutter-Hive-NoSQL-Local-Storage-Database/assets/103892160/14d35ea2-c3d9-44fa-b990-5e75ea9fb2d4" alt="Hive Database Data Get" width="260"/>
+  <img src=" " alt=">Note App Data Add" width="260"/>
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Flutter-Hive-NoSQL-Local-Storage-Database/assets/103892160/a4f9efe1-c653-4507-aba9-9c93f7466155" alt="Hive Database Data Update" width="260"/>
+ <img src=" " alt="Note App Data Show" width="260"/>
 </td>
 
-<td>
-  <img src="https://github.com/mdsomad/Flutter-Hive-NoSQL-Local-Storage-Database/assets/103892160/cb11f1fd-d107-4332-be8f-f350bf3d8fbd" alt="Hive Database Data delete" width="260"/>
-</td>
 
   
 </tr>
 
-</table> -->
+</table>
 
 
 
