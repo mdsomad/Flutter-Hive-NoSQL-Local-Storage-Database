@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hive_nosql_local_storage_database/Boxes/boxes.dart';
+import 'package:flutter_hive_nosql_local_storage_database/models/notes_model.dart';
 import 'package:hive/hive.dart';
 
 
@@ -11,6 +13,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+final titleController = TextEditingController();
+final descriptionController = TextEditingController();
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,23 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
             return Column(
               children: [
 
-                ListTile(
-                  title:Text(snapshot.data!.get("name").toString()),
-                  subtitle:Text(snapshot.data!.get("age").toString()) ,
 
-                  trailing: IconButton(onPressed: (){
-
-                     // snapshot.data!.put("name", "Md Somad Updata");   //* <-- Data Updata
-                     // snapshot.data!.put("age",26);                    //* <-- Data Updata
-
-                     snapshot.data!.delete("name");                      //* <-- Data delete
-
-                     setState(() {
-                       
-                     });
-
-                  }, icon:Icon(Icons.edit)),
-                )
                 
               ],
             );
@@ -56,28 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
       
       floatingActionButton: FloatingActionButton(onPressed: ()async{
         
-        //TODO Create Box 
-        var box = await Hive.openBox("Somad");
-
-        //TODO Create Multiple Box 
-        var box2 = await Hive.openBox("MultipleBoxCreate");
-
-        box2.put("NewBox", "New Box Data Add");
-
-        box.put("name", "Md Somad");     //* <-- Data Add
-        box.put("age",20);               //* <-- Data Add
-        box.put("userdetails",{          //* <-- Object data Add
-          'name':"Amir",
-          'city':"islampur",
-          "country":"India"
-        });
-
-        print(box.get("name"));                    //* <-- Data get
-        print(box.get("age"));
-        print(box.get("userdetails")['city']);    //* <-- Object data get
-
-        print(box2.get('NewBox'));                //* <-- New Box2 Data get
-         
+       _showdMydialog();
         
       },
       child: Icon(Icons.add),
@@ -85,4 +55,69 @@ class _HomeScreenState extends State<HomeScreen> {
       
     );
   }
+
+
+
+Future<void> _showdMydialog(){
+  return showDialog(context: context, builder:(context) {
+    
+    return AlertDialog(
+      title: Text("Add Notes"),
+
+      content: SingleChildScrollView(
+        child: Column(
+          children: [
+            TextFormField(
+              controller: titleController,
+              decoration: InputDecoration(
+                hintText: "Enter title",
+                border: OutlineInputBorder()
+              ),
+            ),
+
+           const SizedBox(
+              height: 10,
+            ),
+
+            TextFormField(
+              controller: descriptionController,
+              decoration: InputDecoration(
+                hintText: "Enter description",
+                border: OutlineInputBorder()
+              ),
+            )
+          ],
+        ),
+      ),
+      
+      actions: [
+        TextButton(onPressed: (){
+          Navigator.pop(context);
+        }, child:Text("Cancel")),
+
+
+        TextButton(onPressed: (){
+          
+        final data = NotesModel(title: titleController.text, description: descriptionController.text);
+
+        final box = Boxes.getData();
+
+        box.add(data);
+        
+        print(box);
+        
+        data.save();
+        titleController.clear();
+        descriptionController.clear();
+
+         
+        }, child:Text("Add"))
+      ],
+    );
+  },);
+}
+
+
+
+  
 }

@@ -21,6 +21,27 @@ path_provider: ^2.0.15
 flutter pub add path_provider
 ```
 
+
+- thard Add This Package
+```sh
+hive_flutter: ^1.1.0
+```
+- Run this command
+```sh
+flutter pub add hive_flutter
+```
+
+
+
+
+- Add this Package dev_dependencies
+```sh
+hive_generator: ^2.0.0
+build_runner: any
+```
+
+
+
 Then Add This Permissions android/app/src/main/AndroidManifest.xml file:
 ```sh 
  <uses-permission
@@ -32,7 +53,18 @@ Then Add This Permissions android/app/src/main/AndroidManifest.xml file:
 
 
 
-## Hive Database App Ui Preview
+- build_runner Model generator command
+```sh
+flutter pub run build_runner build
+```
+
+
+
+
+
+
+
+<!-- ## Hive Database App Ui Preview
 
 
 <table>
@@ -63,7 +95,7 @@ Then Add This Permissions android/app/src/main/AndroidManifest.xml file:
   
 </tr>
 
-</table>
+</table> -->
 
 
 
