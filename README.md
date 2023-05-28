@@ -70,9 +70,12 @@ flutter pub run build_runner build
 <table>
   
   
-<tr>                    
-   <th>Notes App Data Add view</th>
-   <th>Notes App Data Show view</th>
+<tr>                     
+   <th> All Notes Data Show view</th>
+   <th> Old Data Dialog view</th>
+   <th> Edited Dialog Data view</th>
+   <th> Updated Data view</th>
+   <th> Hello Somad Note deleted view</th>
 </tr>  
   
   
@@ -80,11 +83,24 @@ flutter pub run build_runner build
 <tr>
 
 <td>
-  <img src="https://github.com/mdsomad/Flutter-Hive-NoSQL-Local-Storage-Database/assets/103892160/2cc2ff8d-7c24-4d3c-b8ce-21a3a90155f5" alt=">Note App Data Add" width="260"/>
+  <img src=" " alt=">All Notes Data Show view" width="260"/>
 </td>
 
 <td>
- <img src="https://github.com/mdsomad/Flutter-Hive-NoSQL-Local-Storage-Database/assets/103892160/8d156fcd-552b-4d9d-9203-02e9093cdf31" alt="Note App Data Show" width="260"/>
+ <img src=" " alt="Old Data Dialog view" width="260"/>
+</td>
+
+
+<td>
+ <img src=" " alt="Edited Dialog Data view" width="260"/>
+</td>
+
+<td>
+ <img src=" " alt="Updated Data view" width="260"/>
+</td>
+
+<td>
+ <img src=" " alt="Hello Somad Note deleted view" width="260"/>
 </td>
 
 
